@@ -1356,9 +1356,8 @@ The default condition handler for timer functions (see
 ;;; Words of encouragement
 
 (defun slime-user-first-name ()
-  (let ((name (if (string= (user-full-name) "")
-                  (user-login-name)
-                (user-full-name))))
+  (let ((name (or (user-full-name)
+                  (user-login-name))))                  
     (string-match "^[^ ]*" name)
     (capitalize (match-string 0 name))))
 
